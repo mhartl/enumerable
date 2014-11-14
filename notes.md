@@ -6,6 +6,7 @@ synonyms
   first
 
   any?
+  all?
   none?
 
   collect = map
