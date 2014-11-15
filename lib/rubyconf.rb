@@ -136,4 +136,88 @@ class Rubyconf
     squares_and_pairs
     enum.zip(squares)
   end
+
+  def days_of_the_week
+    days = %w[Sunday Moonday Tiwsday (W)odensday Thorsday Friggday Saturnday]
+    # 4.times do
+    #   days.each do |day|
+    #     puts "Today is #{day}"
+    #   end
+    # end
+    days.cycle(4) { |day| puts "Today is #{day}" }
+  end
+
+  def first_n_primes(n)
+    primes = []
+    i = 1
+    loop do
+      primes << i if i.prime?
+      i += 1
+      break if primes.length == n
+    end
+    primes
+    # natural_numbers.select { |k| k.prime? }.first(n)
+    # natural_numbers.select(&:prime?).first(n)
+  end
 end
+
+def natural_numbers
+  (1..Float::INFINITY).lazy
+end
+
+class Fixnum
+
+  def prime?
+    return false if self == 1
+    return true  if self == 2
+    (2..Math.sqrt(self)).each do |k|
+      # return false if self % k == 0
+      return false if divisible_by?(k)
+    end
+    return true
+    (2..Math.sqrt(self)).none? { |k| divisible_by?(k) }
+    (2..Math.sqrt(self)).none?(&:divisible_by?)
+  end
+
+  def divisible_by?(n)
+    self % n == 0
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,21 @@
 require 'minitest/autorun'
 require 'set'
 require './lib/rubyconf'
+require 'stringio'
+
+module Kernel
+
+  def capture_stdout
+    out = StringIO.new
+    $stdout = out
+    yield
+    return out
+  ensure
+    $stdout = STDOUT
+  end
+
+end
+
 
 class TestRubyconf < Minitest::Test
 
@@ -72,5 +87,42 @@ class TestRubyconf < Minitest::Test
     assert_equal [[1, 1], [2, 4], [3, 9], [4, 16], [5, 25]],
                  @rubyconf.more_squares_and_pairs(@enum)
   end
+
+  def test_days_of_the_week
+    out = capture_stdout do
+      @rubyconf.days_of_the_week
+    end
+    messages  = "Today is Sunday\nToday is Moonday\nToday is Tiwsday\n"
+    messages += "Today is (W)odensday\nToday is Thorsday\nToday is Friggday\n"
+    messages += "Today is Saturnday\n"
+    assert_equal messages * 4, out.string
+  end
+
+  def test_first_n_primes
+    assert_equal [2, 3, 5, 7, 11, 13, 17, 19, 23], @rubyconf.first_n_primes(9)
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
