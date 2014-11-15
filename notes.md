@@ -1,5 +1,8 @@
 # Enumerable talk notes
 
+Open with an example of long version of primes
+End with before and after of primes
+
 synonyms
 
   take

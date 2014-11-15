@@ -1,8 +1,5 @@
 class Rubyconf
 
-  def init
-  end
-
   def return_first_n_elements(enum, n)
     i = 0
     retval = []
@@ -12,6 +9,8 @@ class Rubyconf
       break if i >= n
     end
     retval
+    # Enumerable#take
+    # Enumerable#first
     # enum.take(n)
     # enum.first(n)
   end
@@ -156,6 +155,7 @@ class Rubyconf
       break if primes.length == n
     end
     primes
+    # natural_numbers.select { |k| k.prime? }.take(n)
     # natural_numbers.select { |k| k.prime? }.first(n)
     # natural_numbers.select(&:prime?).first(n)
   end
