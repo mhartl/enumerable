@@ -102,4 +102,38 @@ class Rubyconf
     enum.inject(1, :*)
     enum.reduce(1, :*)
   end
+
+  def valid_email_addresses(addresses)
+    valid_email_regex = /[\w+\-.]+@[a-z\d\-.]+\.[a-z]+/i
+    valid_emails = []
+    addresses.each do |address|
+      valid_emails << address if address =~ valid_email_regex
+    end
+    valid_emails
+    # addresses.grep(valid_email_regex)
+  end
+
+  def evens_and_odds(enum)
+    evens = []
+    odds  = []
+    enum.each do |n|
+      if n.even?
+        evens << n
+      else
+        odds << n
+      end
+    end
+    [evens, odds]
+    enum.partition { |n| n.even? }
+  end
+
+  def more_squares_and_pairs(enum)
+    squares = enum.map { |n| n**2 }
+    squares_and_pairs = []
+    enum.each_with_index do |n, i|
+      squares_and_pairs << [n, squares[i]]
+    end
+    squares_and_pairs
+    enum.zip(squares)
+  end
 end

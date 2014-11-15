@@ -1,4 +1,5 @@
-require "minitest/autorun"
+require 'minitest/autorun'
+require 'set'
 require './lib/rubyconf'
 
 class TestRubyconf < Minitest::Test
@@ -51,6 +52,25 @@ class TestRubyconf < Minitest::Test
 
   def test_product
     assert_equal 120, @rubyconf.product(@enum)
+  end
+
+  def test_valid_email_addresses
+    addresses = %w[user@example.com user_at_foo.org USER@foo.COM
+                   first.last@foo.jp alice+bob@baz.cn
+                   user@example,com user.name@example.
+                   foo@bar_baz.com A_US-ER@foo.bar.org foo@bar+baz.com]
+    assert_equal %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
+                    first.last@foo.jp alice+bob@baz.cn].to_set,
+                 @rubyconf.valid_email_addresses(addresses).to_set
+  end
+
+  def test_evens_and_odds
+    assert_equal [[2, 4], [1, 3, 5]], @rubyconf.evens_and_odds(@enum)
+  end
+
+  def test_more_squares_and_pairs
+    assert_equal [[1, 1], [2, 4], [3, 9], [4, 16], [5, 25]],
+                 @rubyconf.more_squares_and_pairs(@enum)
   end
 end
 
