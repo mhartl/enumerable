@@ -9,6 +9,7 @@ class Rubyconf
       break if i >= n
     end
     retval
+    # Why not [0...n]?
     # Enumerable#take
     # Enumerable#first
     # enum.take(n)
@@ -21,6 +22,7 @@ class Rubyconf
     end
     false
     # enum.any? { |e| e.odd? }
+    # enum.any?(&:odd?)
   end
 
   def all_are_odd(enum)
