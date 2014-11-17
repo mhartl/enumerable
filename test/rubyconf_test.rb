@@ -23,8 +23,9 @@ class TestRubyconf < Minitest::Test
     @enum     = [1, 2, 3, 4, 5]
   end
 
-  def test_return_first_n_elements
-    assert_equal [1, 2, 3], @rubyconf.return_first_n_elements(@enum, 3)
+  def test_first_n_elements
+    assert_equal [1, 2, 3], 
+                 @rubyconf.first_n_elements(@enum, 3)
   end
 
   def test_square_each_element
