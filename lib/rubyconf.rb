@@ -1,6 +1,6 @@
 class Rubyconf
 
-  def return_first_n_elements(enum, n)
+  def first_n_elements(enum, n)
     i = 0
     retval = []
     enum.each do |k|
