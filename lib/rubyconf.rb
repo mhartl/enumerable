@@ -152,15 +152,37 @@ class Rubyconf
     primes = []
     i = 1
     loop do
-      primes << i if i.prime?
+      is_prime = true
+      if i == 1
+        is_prime = false
+      else
+        (2..Math.sqrt(i)).each do |k|
+          if i % k == 0
+            is_prime = false
+            break
+          end
+        end
+      end
+      primes << i if is_prime
       i += 1
       break if primes.length == n
     end
     primes
-    # natural_numbers.select { |k| k.prime? }.take(n)
-    # natural_numbers.select { |k| k.prime? }.first(n)
-    # natural_numbers.select(&:prime?).first(n)
   end
+
+  # def first_n_primes(n)
+  #   primes = []
+  #   i = 1
+  #   loop do
+  #     primes << i if i.prime?
+  #     i += 1
+  #     break if primes.length == n
+  #   end
+  #   primes
+  #   # natural_numbers.select { |k| k.prime? }.take(n)
+  #   # natural_numbers.select { |k| k.prime? }.first(n)
+  #   # natural_numbers.select(&:prime?).first(n)
+  # end
 end
 
 def natural_numbers
