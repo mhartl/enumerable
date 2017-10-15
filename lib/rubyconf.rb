@@ -1,4 +1,4 @@
-class Rubyconf
+class RubySummit
 
   def first_n_elements(enum, n)
     i = 0
