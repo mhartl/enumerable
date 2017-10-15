@@ -26,20 +26,18 @@ class RubySummit
   end
 
   def all_are_odd(enum)
-    retval = true
     enum.each do |n|
-      retval = false unless n.odd?
+      return false unless n.odd?
     end
-    retval
+    true
     # enum.all? { |e| e.odd? }
   end
 
   def none_are_odd(enum)
-    retval = true
     enum.each do |n|
-      retval = false if n.odd?
+      return false if n.odd?
     end
-    retval
+    true
     # enum.none? { |e| e.odd? }
   end
 
@@ -86,9 +84,9 @@ class RubySummit
       square_pairs << [n, n**2]
     end
     square_pairs
-    enum.inject([]) do |square_pairs, n|
-      square_pairs << [n, n**2]
-    end
+    # enum.inject([]) do |square_pairs, n|
+    #   square_pairs << [n, n**2]
+    # end
   end
 
   def product(enum)
@@ -100,8 +98,8 @@ class RubySummit
     enum.inject(1) do |factorial, n|
       factorial *= n
     end
-    enum.inject(1, :*)
-    enum.reduce(1, :*)
+    # enum.inject(1, :*)
+    # enum.reduce(1, :*)
   end
 
   def valid_email_addresses(addresses)
@@ -125,7 +123,7 @@ class RubySummit
       end
     end
     [evens, odds]
-    enum.partition { |n| n.even? }
+    # enum.partition { |n| n.even? }
   end
 
   def more_squares_and_pairs(enum)
@@ -135,17 +133,7 @@ class RubySummit
       squares_and_pairs << [n, squares[i]]
     end
     squares_and_pairs
-    enum.zip(squares)
-  end
-
-  def days_of_the_week
-    days = %w[Sunday Moonday Tiwsday (W)odensday Thorsday Friggday Saturnday]
-    # 4.times do
-    #   days.each do |day|
-    #     puts "Today is #{day}"
-    #   end
-    # end
-    days.cycle(4) { |day| puts "Today is #{day}" }
+    # enum.zip(squares)
   end
 
   def first_n_primes(n)
@@ -170,36 +158,40 @@ class RubySummit
     primes
   end
 
-  # def first_n_primes(n)
-  #   primes = []
-  #   i = 1
-  #   loop do
-  #     primes << i if i.prime?
-  #     i += 1
-  #     break if primes.length == n
-  #   end
-  #   primes
-  #   # natural_numbers.select { |k| k.prime? }.take(n)
-  #   # natural_numbers.select { |k| k.prime? }.first(n)
-  #   # natural_numbers.select(&:prime?).first(n)
-  # end
+  def first_n_primes(n)
+    # primes = []
+    # i = 1
+    # loop do
+    #   primes << i if i.prime?
+    #   i += 1
+    #   break if primes.length == n
+    # end
+    # primes
+    primes.take(n).force
+    # primes.first(n)
+  end
 end
 
 def natural_numbers
   (1..Float::INFINITY).lazy
 end
 
-class Fixnum
+def primes
+  natural_numbers.select(&:prime?)
+end
+
+class Integer
 
   def prime?
+    return false if self <= 0
     return false if self == 1
     return true  if self == 2
     (2..Math.sqrt(self)).each do |k|
-      # return false if self % k == 0
-      return false if divisible_by?(k)
+      return false if self % k == 0
+      # return false if divisible_by?(k)
     end
     return true
-    (2..Math.sqrt(self)).none? { |k| divisible_by?(k) }
+    # (2..Math.sqrt(self)).none? { |k| divisible_by?(k) }
     (2..Math.sqrt(self)).none?(&:divisible_by?)
   end
 

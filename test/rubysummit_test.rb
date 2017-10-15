@@ -88,18 +88,9 @@ class TestRubySummit < Minitest::Test
                  @rubysummit.more_squares_and_pairs(@enum)
   end
 
-  def test_days_of_the_week
-    out = capture_stdout do
-      @rubysummit.days_of_the_week
-    end
-    messages  = "Today is Sunday\nToday is Moonday\nToday is Tiwsday\n"
-    messages += "Today is (W)odensday\nToday is Thorsday\nToday is Friggday\n"
-    messages += "Today is Saturnday\n"
-    assert_equal messages * 4, out.string
-  end
-
   def test_first_n_primes
-    assert_equal [2, 3, 5, 7, 11, 13, 17, 19, 23], @rubysummit.first_n_primes(9)
+    assert_equal [2, 3, 5, 7, 11, 13, 17, 19, 23, 29],
+                 @rubysummit.first_n_primes(10)
   end
 end
 

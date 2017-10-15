@@ -62,20 +62,18 @@ class RubySummit
   end
 
   def all_are_odd(enum)
-    retval = true
     enum.each do |n|
-      retval = false unless n.odd?
+      return false unless n.odd?
     end
-    retval
+    true
     # enum.all? { |e| e.odd? }
   end
 
   def none_are_odd(enum)
-    retval = true
     enum.each do |n|
-      retval = false if n.odd?
+      return false if n.odd?
     end
-    retval
+    true
     # enum.none? { |e| e.odd? }
   end
 
