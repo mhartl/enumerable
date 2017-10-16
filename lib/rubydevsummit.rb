@@ -78,7 +78,7 @@ class RubyDevSummit
     # enum.detect { |n| n.even? }
   end
 
-  def make_pairs_of_numbers_and_squares(enum)
+  def make_pairs_of_squares(enum)
     square_pairs = []
     enum.each do |n|
       square_pairs << [n, n**2]

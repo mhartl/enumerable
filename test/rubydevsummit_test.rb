@@ -47,9 +47,9 @@ class TestRubyDevSummit < Minitest::Test
     assert_equal 2, @rubydevsummit.find_first_even(@enum)
   end
 
-  def test_make_pairs_of_numbers_and_squares
+  def test_make_pairs_of_squares
     assert_equal [[1, 1], [2, 4], [3, 9], [4, 16], [5, 25]],
-                 @rubydevsummit.make_pairs_of_numbers_and_squares(@enum)
+                 @rubydevsummit.make_pairs_of_squares(@enum)
   end
 
   def test_valid_email_addresses
@@ -63,7 +63,8 @@ class TestRubyDevSummit < Minitest::Test
   end
 
   def test_evens_and_odds
-    assert_equal [[2, 4], [1, 3, 5]], @rubydevsummit.evens_and_odds(@enum)
+    assert_equal [[2, 4], [1, 3, 5]],
+                 @rubydevsummit.evens_and_odds(@enum)
   end
 
   def test_more_squares_and_pairs
