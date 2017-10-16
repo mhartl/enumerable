@@ -1,4 +1,4 @@
-class RubySummit
+class RubyDevSummit
 
   def first_n_elements(enum, n)
     i = 0
@@ -89,19 +89,6 @@ class RubySummit
     # end
   end
 
-  def product(enum)
-    factorial = 1
-    enum.each do |n|
-      factorial *= n
-    end
-    factorial
-    enum.inject(1) do |factorial, n|
-      factorial *= n
-    end
-    # enum.inject(1, :*)
-    # enum.reduce(1, :*)
-  end
-
   def valid_email_addresses(addresses)
     valid_email_regex = /[\w+\-.]+@[a-z\d\-.]+\.[a-z]+/i
     valid_emails = []
@@ -134,6 +121,15 @@ class RubySummit
     end
     squares_and_pairs
     # enum.zip(squares)
+  end
+
+  def color_alternation(colors, n)
+    output = []
+    n.times do
+      output += colors
+    end
+    output
+    # colors.cycle(n).to_a
   end
 
   def first_n_primes(n)
@@ -199,41 +195,3 @@ class Integer
     self % n == 0
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
